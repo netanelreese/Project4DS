@@ -43,6 +43,7 @@ protected:
 	DataType* _root;
 	BinarySearchTree<DataType>* _left;
 	BinarySearchTree<DataType>* _right;
+	BinarySearchTree<DataType>* _yTree;
 	bool _subtree;
 	virtual BinarySearchTree<DataType>* makeSubtree();
 	virtual void copyTree (BinarySearchTree<DataType>* bst);
@@ -320,7 +321,7 @@ void BinarySearchTree<DataType>::remove (const DataType& data)
 }
 // --------------------------------------------------------------
 template <class DataType>
-void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataType& high)
+void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataType& high) //TODO
 {
 	if (isEmpty()) return;
 	if (*_root >= low)
