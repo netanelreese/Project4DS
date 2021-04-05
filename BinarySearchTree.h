@@ -72,6 +72,7 @@ public:
 	virtual void remove (const DataType& data);
 	virtual void rangeSearch (const DataType& low, const DataType& high);
 	virtual void insert (const DataType& data);
+	virtual BinarySearchTree<DataType>* getYTree();
 
 };
 template <class DataType>
@@ -166,6 +167,10 @@ BinarySearchTree<DataType>* BinarySearchTree<DataType>::right (){ return _right;
 // --------------------------------------------------------------
 template <class DataType>
 bool BinarySearchTree<DataType>::subtree() { return _subtree; }
+// --------------------------------------------------------------
+template <class DataType>
+BinarySearchTree<DataType>* BinarySearchTree<DataType>::getYTree() {return _yTree;}
+//returns the yTree member
 // --------------------------------------------------------------
 template <class DataType>
 void BinarySearchTree<DataType>::makeEmpty ()
