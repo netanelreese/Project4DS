@@ -271,11 +271,11 @@ BinarySearchTree<DataType>* BinarySearchTree<DataType>::_insert (const DataType&
 // --------------------------------------------------------------
 template <class DataType>
 void BinarySearchTree<DataType>::insert(DataType& X, DataType& Y, int ID) {
-    BinarSearchTree<DataType>* temp1;
-    temp1 = _find(x);
-    if(temp1 == NULL) temp1 = _insert(x);
+    BinarySearchTree<DataType>* temp1 = new BinarySearchTree<DataType>();
+    temp1 = _find(X);
+    if(temp1 == NULL) temp1 = _insert(X);
     (*temp1).id = -1;
-    BinarySearchTree<DataType>* temp2 = *((*temp1).yTree)._insert(y);
+    BinarySearchTree<DataType>* temp2 = ((*temp1).getYTree())->_insert(Y);
     (*temp2).id = ID;
 }
 // --------------------------------------------------------------

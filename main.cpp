@@ -13,21 +13,25 @@ int main()
 
     cout <<"Initially the tree has  "<< bst << endl;
 
-    bst.insert (20);
+    bst._insert (20);
     cout <<"After Insertion of 20:  "<< bst << endl;
 
-    bst.insert (10);
+    bst._insert (10);
     cout <<"After Insertion of 10:  "<< bst << endl;
 
-    bst.insert (200);
+    bst._insert (200);
     cout <<"After Insertion of 200:  "<< bst << endl;
 
-    bst.insert (25);
+    bst._insert (25);
+    cout <<"After Insertion of 25:  "<< bst << endl;
+
+    bst._insert (30);
     cout <<"After Insertion of 25:  "<< bst << endl;
 
     cout << "Trying to find 30..." << endl;
     try {
         bst.find(30);
+        cout<<endl;
     }
     catch (BinarySearchTreeNotFound e) {
         cout << "Element 30 not found!!" << endl;
