@@ -44,6 +44,7 @@ protected:
 	BinarySearchTree<DataType>* _left;
 	BinarySearchTree<DataType>* _right;
 	BinarySearchTree<DataType>* _yTree;
+	int id;
 	bool _subtree;
 	virtual BinarySearchTree<DataType>* makeSubtree();
 	virtual void copyTree (BinarySearchTree<DataType>* bst);
@@ -56,6 +57,8 @@ public:
 	virtual bool isEmpty();
     // returns true if tree is empty,
     // but otherwise returns false
+    virtual int getID();
+    //returns the id of the thing
 	virtual int height ();
     // returns the height (or depth) of the tree
 	virtual int size ();
@@ -71,7 +74,8 @@ public:
 	virtual DataType find (const DataType& q);
 	virtual void remove (const DataType& data);
 	virtual void rangeSearch (const DataType& low, const DataType& high);
-	virtual void insert (const DataType& data);
+	virtual BinarySearchTree<DataType>* _insert (const DataType& data);
+	virtual void insert(DataType& x, DataType& y, int ID);
 	virtual BinarySearchTree<DataType>* getYTree();
 
 };
@@ -173,6 +177,11 @@ BinarySearchTree<DataType>* BinarySearchTree<DataType>::getYTree() {return _yTre
 //returns the yTree member
 // --------------------------------------------------------------
 template <class DataType>
+int BinarySearchTree<DataType>::getID() {
+    return id;
+}
+//---------------------------------------------------------------
+template <class DataType>
 void BinarySearchTree<DataType>::makeEmpty ()
 {
 	if (_subtree) throw BinarySearchTreeChangedSubtree();
@@ -243,7 +252,7 @@ DataType BinarySearchTree<DataType>::find (const DataType& q)
 }
 // --------------------------------------------------------------
 template <class DataType>
-void BinarySearchTree<DataType>::insert (const DataType& data)
+BinarySearchTree<DataType>* BinarySearchTree<DataType>::_insert (const DataType& data)
 {
 	if (_subtree) throw BinarySearchTreeChangedSubtree();
 	BinarySearchTree<DataType>* bst = _find (data);
@@ -258,6 +267,16 @@ void BinarySearchTree<DataType>::insert (const DataType& data)
         delete bst->_root;
 		bst->_root = new DataType (data);
 	}
+}
+// --------------------------------------------------------------
+template <class DataType>
+void BinarySearchTree<DataType>::insert(DataType& X, DataType& Y, int ID) {
+    BinarSearchTree<DataType>* temp1;
+    temp1 = _find(x);
+    if(temp1 == NULL) temp1 = _insert(x);
+    (*temp1).id = -1;
+    BinarySearchTree<DataType>* temp2 = *((*temp1).yTree)._insert(y);
+    (*temp2).id = ID;
 }
 // --------------------------------------------------------------
 template <class DataType>
