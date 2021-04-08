@@ -53,6 +53,7 @@ protected:
 public:
 	BinarySearchTree ();
 	BinarySearchTree (const DataType& data);
+    BinarySearchTree(DataType& X, DataType& Y, int ID);
 	virtual ~BinarySearchTree ();
 	virtual bool isEmpty();
     // returns true if tree is empty,
@@ -96,6 +97,7 @@ BinarySearchTree<DataType>::BinarySearchTree ()
 	_left = NULL;
 	_right = NULL;
 	_subtree = false;
+	id = 0;
 }
 // --------------------------------------------------------------
 template <class DataType>
@@ -106,6 +108,17 @@ BinarySearchTree<DataType>::BinarySearchTree (const DataType& data)
 	//if (data == NULL) throw BinaryTreeMemory();
 	_left = makeSubtree ();
 	_right = makeSubtree ();
+}
+// --------------------------------------------------------------
+template <class DT>
+BinarySearchTree<DT>::BinarySearchTree(DT& X, DT& Y, int ID) {
+    _subtree = false;
+    _root = new BinarySearchTree(X);
+    _yTree = new BinarySearchTree(Y);
+    _left = makeSubtree();
+    _right = makeSubtree();
+    id = ID;
+    _yTree->id = ID;
 }
 // --------------------------------------------------------------
 template <class DataType>
