@@ -57,5 +57,7 @@ int main()
     bst.remove(10);
     cout<<"After removal of 10:"<<bst<<endl;
 
+    bst.display();
+
     return 0;
 }
