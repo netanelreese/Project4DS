@@ -54,6 +54,7 @@ public:
 	BinarySearchTree ();
 	BinarySearchTree (const DataType& data);
     BinarySearchTree(DataType& X, DataType& Y, int ID);
+    BinarySearchTree(BinarySearchTree<DataType>& copy);
 	virtual ~BinarySearchTree ();
 	virtual bool isEmpty();
     // returns true if tree is empty,
@@ -78,10 +79,11 @@ public:
 	virtual BinarySearchTree<DataType>* _insert (const DataType& data);
 	virtual void insert(DataType& x, DataType& y, int ID);
 	virtual BinarySearchTree<DataType>* getYTree();
-	virtual void global_rebalance(DataType* IA, int left, int right);
+	//virtual void global_rebalance(BinarySearchTree<DataType>* IA, int left, int right);
 	virtual void display();
     virtual void preorder();
     virtual void inorder();
+    virtual void setYTree(BinarySearchTree<DataType>* yTree);
 
 };
 template <class DataType>
@@ -122,6 +124,22 @@ BinarySearchTree<DT>::BinarySearchTree(DT& X, DT& Y, int ID) {
     _left = makeSubtree();
     _right = makeSubtree();
     id = ID;
+    _yTree->id = ID;
+}
+// --------------------------------------------------------------
+template <class DT>
+BinarySearchTree<DT>::BinarySearchTree(BinarySearchTree<DT>& copy) {
+    if (copy._subtree) {
+        _subtree = true;
+    }
+    else {
+        _subtree = false;
+    }
+    _root = copy._root;
+    _yTree = copy._yTree;
+    _left = copy._left;
+    _right = copy._right;
+    id = copy.id;
     _yTree->id = ID;
 }
 // --------------------------------------------------------------
@@ -219,6 +237,8 @@ void BinarySearchTree<DataType>::copyTree(BinarySearchTree<DataType>* bst)
 	_root = bst->_root;
 	_left = bst->_left;
 	_right = bst->_right;
+	_yTree = bst->_yTree;
+	id = bst->getID();
 }
 // --------------------------------------------------------------
 template <class DataType>
@@ -377,33 +397,22 @@ void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataTyp
         _right->rangeSearch(low,high);
 }
 // ---------------------------------------------------------------
-template <class DT>
-void BinarySearchTree<DT>::global_rebalance(DT* inputArr, int left, int right) {
-    int mid = 0;
-    BinarySearchTree<DT>* temp = NULL;
-
-    if (left <= right) {
-        mid = (left+right) / 2;
-        temp = IA[mid];
-        (*temp)._left = global_rebalance(inputArr, left, mid - 1);
-        (*temp)._right = global_rebalance(inputArr, mid+1, right);
-    }
-    return temp;
-}
+//TODO: GLOBAL REBALANCE
 // -----------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::display() {
     cout << "Preorder Traversal:" << endl;
-    cout << preorder() << endl;
-    cout << "Inorder Traversal:" << endl;
-    cout << inorder() << endl;
+    preorder();
+    inorder();
 }
 // ------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::preorder() {
     if (_root != NULL) {
         cout << _root << " ";
-        _yTree->preorder();
+        if (_yTree != NULL) {
+            _yTree->preorder();
+        }
         (*_left).preorder();
         (*_right).preorder();
 
@@ -414,10 +423,18 @@ template <class DT>
 void BinarySearchTree<DT>::inorder() {
     if (_root != NULL) {
         (*_left).inorder();
-        _yTree->inorder();
+        if (_yTree != NULL) {
+            _yTree->inorder();
+        }
         cout << _root << " ";
         (*_right).inorder();
     }
+}
+// --------------------------------------------------------------------
+template <class DT>
+void BinarySearchTree<DT>::setYTree(BinarySearchTree<DT>* yTree) {
+    _yTree = new BinarySearchTree<DT>();
+    _yTree->copyTree(yTree);
 }
 
 #endif

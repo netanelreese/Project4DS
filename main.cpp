@@ -13,6 +13,8 @@ int main()
 
     cout <<"Initially the tree has  "<< bst << endl;
 
+    bst.setYTree(new BinarySearchTree<int>(100));
+
     bst._insert (20);
     cout <<"After Insertion of 20:  "<< bst << endl;
 
