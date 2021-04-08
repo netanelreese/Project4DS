@@ -79,7 +79,7 @@ public:
 	virtual BinarySearchTree<DataType>* _insert (const DataType& data);
 	virtual void insert(DataType& x, DataType& y, int ID);
 	virtual BinarySearchTree<DataType>* getYTree();
-	virtual BinarySearchTree<DataType>* global_rebalance(BinarySearchTree<DataType>* IA, int left, int right);
+	//virtual BinarySearchTree<DataType>* global_rebalance(BinarySearchTree<DataType>* IA, int left, int right);
 	virtual void display();
     virtual void preorder();
     virtual void inorder();
@@ -397,19 +397,7 @@ void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataTyp
         _right->rangeSearch(low,high);
 }
 // -----------------------------------------------------------------
-template <class DT>
-BinarySearchTree<DT>* BinarySearchTree<DT>::global_rebalance(DT* IA, int left, int right) {
-    int mid = 0;
-    BinarySearchTree<DT>* temp = new BinarySearchTree<DT>();
 
-    if (left <= right) {
-        mid = (left+right)/2;
-        temp->copyTree(*(IA[mid]));
-        (*temp)._left.copyTree(global_rebalance(IA, left, mid-1));
-        (*temp)._right.copyTree(global_rebalance(IA, mid+1, right));
-    }
-    return temp;
-}
 // -----------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::display() {
@@ -420,9 +408,9 @@ void BinarySearchTree<DT>::display() {
 // ------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::preorder() {
-    if (_root != NULL) {
-        cout << _root << " ";
-        if (_yTree != NULL) {
+    if (!(isEmpty())) {
+        cout << root() << " ";
+        if (!(_yTree->isEmpty())) {
             _yTree->preorder();
         }
         (*_left).preorder();
@@ -438,7 +426,7 @@ void BinarySearchTree<DT>::inorder() {
         if (_yTree != NULL) {
             _yTree->inorder();
         }
-        cout << _root << " ";
+        cout << root() << " ";
         (*_right).inorder();
     }
 }
