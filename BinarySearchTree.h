@@ -398,13 +398,13 @@ void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataTyp
 }
 // -----------------------------------------------------------------
 template <class DT>
-BinarySearchTree<DT>* BinarySearchTree<DT>::global_rebalance(BinarySearchTree<DT>* IA, int left, int right) {
+BinarySearchTree<DT>* BinarySearchTree<DT>::global_rebalance(DT* IA, int left, int right) {
     int mid = 0;
     BinarySearchTree<DT>* temp = new BinarySearchTree<DT>();
 
     if (left <= right) {
         mid = (left+right)/2;
-        temp->copyTree(IA[mid]);
+        temp->copyTree(*(IA[mid]));
         (*temp)._left.copyTree(global_rebalance(IA, left, mid-1));
         (*temp)._right.copyTree(global_rebalance(IA, mid+1, right));
     }
