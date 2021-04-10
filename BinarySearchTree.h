@@ -472,21 +472,6 @@ int BinarySearchTree<DataType>::getInorderTraversal(BinarySearchTree<DataType>* 
     return index;
 }
 // ----------------------------------------------------------------------------------------------------------------------------------
-template<class DataType>
-BinarySearchTree<DataType>* GlobalRebalance(BinarySearchTree<DataType>** inOrderArray, int l, int r)
-{
-    int mid = 0;
-    BinarySearchTree<DataType>* temp = new BinarySearchTree<DataType>();
 
-    if(l <= r)
-    {
-        mid = ((l + r) / 2);
-        temp = inOrderArray[mid];
-        temp->left(GlobalRebalance(inOrderArray, l, mid - 1));
-        temp->right(GlobalRebalance(inOrderArray, mid + 1, r));
-    }
-
-    return temp;
-}
 
 #endif

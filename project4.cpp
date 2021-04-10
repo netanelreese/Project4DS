@@ -15,6 +15,22 @@ const char BALY = 'Y';
 const char RANGESEARCH = 'S';
 const char REMOVE = 'R';
 
+template<class DataType>
+BinarySearchTree<DataType>* GlobalRebalance(BinarySearchTree<DataType>** inOrderArray, int l, int r)
+{
+    int mid = 0;
+    BinarySearchTree<DataType>* temp = new BinarySearchTree<DataType>();
+
+    if(l <= r)
+    {
+        mid = ((l + r) / 2);
+        temp = inOrderArray[mid];
+        temp->left(GlobalRebalance(inOrderArray, l, mid - 1));
+        temp->right(GlobalRebalance(inOrderArray, mid + 1, r));
+    }
+
+    return temp;
+}
 
 int main() {
     char command;
@@ -30,20 +46,28 @@ int main() {
         }
         else if (command == FIND) {
             cin >> x, y;
+            cout << "Find: " << x << " " << y << endl;
             InputBST.find(x);
         }
         else if (command == PRINT) {
+            cout << "Print" << endl;
             InputBST.display();
         }
         else if (command == BALY) {
             cin >> y;
-            InputBST.g
+            cout << "Y tree rebalance" << endl;
+            //InputBST.g
         }
         else if (command == RANGESEARCH) {
             cin >> xRange1, xRange2, yRange1, yRange2;
+
+            cout << "Range Search" << endl;
         }
         else if (command == REMOVE) {
+            cin >> x, y;
 
+            cout << "Remove :" << x << " " << y << endl;
+            InputBST.remove(x);
         }
         else {
             cout << "Invalid Command." << endl;
