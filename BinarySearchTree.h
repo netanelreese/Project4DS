@@ -84,6 +84,7 @@ public:
     virtual void preorder();
     virtual void inorder();
     virtual void setYTree(BinarySearchTree<DataType>* yTree);
+    virtual int getInorderTraversal(BinarySearchTree<DataType>* node, BinarySearchTree<DataType>** inOrderArray, int index)
 
 };
 template <class DataType>
@@ -435,6 +436,57 @@ template <class DT>
 void BinarySearchTree<DT>::setYTree(BinarySearchTree<DT>* yTree) {
     _yTree = new BinarySearchTree<DT>();
     _yTree->copyTree(yTree);
+}
+// --------------------------------------------------------------
+template <class DataType>
+int BinarySearchTree<DataType>::getInorderTraversal(BinarySearchTree<DataType>* node, BinarySearchTree<DataType>** inOrderArray, int index)
+{
+    try{
+        if (node->isEmpty()) throw BinarySearchTreeNotFound();
+    }
+    catch(BinarySearchTreeNotFound e){
+        cout << "No tree for inorder traversal" << endl;
+        return index;
+    }
+
+    cout << "value: " << this->root() << endl;
+    // cout << "left: " << *(this->left()->_root) << endl;
+    // cout << "right: " << *(this->right()->_root) << endl;
+
+    if (!this->isEmpty()) {
+        if(node->left()->_root != NULL)
+        {
+            // cout << "\tcalling left" << endl;
+            index = node->left()->getInorderTraversal(node->left(), inOrderArray, index);
+        }
+
+        inOrderArray[index++] = node;
+        // cout << "index: " << index - 1 << " inOrderArray[i]: " << inOrderArray[index - 1]->root() << endl;
+
+        if(node->right()->_root != NULL)
+        {
+            // cout << "\tcalling right" << endl;
+            index = node->right()->getInorderTraversal(node->right(), inOrderArray, index);
+        }
+    }
+    return index;
+}
+// ----------------------------------------------------------------------------------------------------------------------------------
+template<class DataType>
+BinarySearchTree<DataType>* GlobalRebalance(BinarySearchTree<DataType>** inOrderArray, int l, int r)
+{
+    int mid = 0;
+    BinarySearchTree<DataType>* temp = new BinarySearchTree<DataType>();
+
+    if(l <= r)
+    {
+        mid = ((l + r) / 2);
+        temp = inOrderArray[mid];
+        temp->left(GlobalRebalance(inOrderArray, l, mid - 1));
+        temp->right(GlobalRebalance(inOrderArray, mid + 1, r));
+    }
+
+    return temp;
 }
 
 #endif
