@@ -154,6 +154,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\main.cpp.s
 .PHONY : main.cpp.s
 
+project4.obj: project4.cpp.obj
+
+.PHONY : project4.obj
+
+# target to build an object file
+project4.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.obj
+.PHONY : project4.cpp.obj
+
+project4.i: project4.cpp.i
+
+.PHONY : project4.i
+
+# target to preprocess a source file
+project4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.i
+.PHONY : project4.cpp.i
+
+project4.s: project4.cpp.s
+
+.PHONY : project4.s
+
+# target to generate assembly for a file
+project4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.s
+.PHONY : project4.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -166,6 +193,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... project4.obj
+	@echo ... project4.i
+	@echo ... project4.s
 .PHONY : help
 
 

@@ -87,6 +87,12 @@
 		<Unit filename="C:/Users/reese/CLionProjects/project4_2413/main.cpp">
 			<Option target="project4_2413"/>
 		</Unit>
+		<Unit filename="C:/Users/reese/CLionProjects/project4_2413/project4.cpp">
+			<Option target="project4_2413"/>
+		</Unit>
+		<Unit filename="C:/Users/reese/CLionProjects/project4_2413/project4.h">
+			<Option target="project4_2413"/>
+		</Unit>
 		<Unit filename="C:/Users/reese/CLionProjects/project4_2413/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
