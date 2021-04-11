@@ -52,24 +52,13 @@ RM = "C:\Program Files\JetBrains\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\reese\CLionProjects\project4_2413
+CMAKE_SOURCE_DIR = C:\Users\reese\CLionProjects\project4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\reese\CLionProjects\project4_2413\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\reese\CLionProjects\project4\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	echo >nul && "C:\Program Files\JetBrains\CLion 2020.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache\fast: rebuild_cache
-
-.PHONY : rebuild_cache\fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -82,11 +71,22 @@ edit_cache\fast: edit_cache
 
 .PHONY : edit_cache\fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2020.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache\fast: rebuild_cache
+
+.PHONY : rebuild_cache\fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\reese\CLionProjects\project4_2413\cmake-build-debug\CMakeFiles C:\Users\reese\CLionProjects\project4_2413\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\reese\CLionProjects\project4\cmake-build-debug\CMakeFiles C:\Users\reese\CLionProjects\project4\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\reese\CLionProjects\project4_2413\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\reese\CLionProjects\project4\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -115,17 +115,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named project4_2413
+# Target rules for targets named project4
 
 # Build rule for target.
-project4_2413: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) project4_2413
-.PHONY : project4_2413
+project4: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) project4
+.PHONY : project4
 
 # fast build rule for target.
-project4_2413\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\build
-.PHONY : project4_2413\fast
+project4\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4.dir\build
+.PHONY : project4\fast
 
 main.obj: main.cpp.obj
 
@@ -133,7 +133,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4.dir\main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -142,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4.dir\main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -151,35 +151,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4.dir\main.cpp.s
 .PHONY : main.cpp.s
-
-project4.obj: project4.cpp.obj
-
-.PHONY : project4.obj
-
-# target to build an object file
-project4.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.obj
-.PHONY : project4.cpp.obj
-
-project4.i: project4.cpp.i
-
-.PHONY : project4.i
-
-# target to preprocess a source file
-project4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.i
-.PHONY : project4.cpp.i
-
-project4.s: project4.cpp.s
-
-.PHONY : project4.s
-
-# target to generate assembly for a file
-project4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\project4_2413.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\project4_2413.dir\project4.cpp.s
-.PHONY : project4.cpp.s
 
 # Help Target
 help:
@@ -189,13 +162,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... project4_2413
+	@echo ... project4
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... project4.obj
-	@echo ... project4.i
-	@echo ... project4.s
 .PHONY : help
 
 

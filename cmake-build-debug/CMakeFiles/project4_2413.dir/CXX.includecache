@@ -6,15 +6,3 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/reese/CLionProjects/project4_2413/BinarySearchTree.h
-iostream
--
-cstdlib
--
-
-C:/Users/reese/CLionProjects/project4_2413/main.cpp
-BinarySearchTree.h
-C:/Users/reese/CLionProjects/project4_2413/BinarySearchTree.h
-iostream
--
-

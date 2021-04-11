@@ -85,7 +85,7 @@ public:
     virtual void inorder();
     virtual void yInorder();
     virtual void yPreorder();
-    virtual void setYTree(BinarySearchTree<DataType>* yTree);
+    virtual void setYTree(BinarySearchTree<DataType>* _yTree);
     virtual int getInorderTraversal(BinarySearchTree<DataType>* node, BinarySearchTree<DataType>** inOrderArray, int index);
 
 };
@@ -143,7 +143,7 @@ BinarySearchTree<DT>::BinarySearchTree(BinarySearchTree<DT>& copy) {
     _left = copy._left;
     _right = copy._right;
     id = copy.id;
-    _yTree->id = ID;
+    _yTree->id = id;
 }
 // --------------------------------------------------------------
 template <class DataType>
@@ -222,7 +222,7 @@ int BinarySearchTree<DataType>::getID() {
 template <class DataType>
 void BinarySearchTree<DataType>::makeEmpty ()
 {
-	if (_subtree) throw BinarySearchTreeChangedSubtree();
+	//if (_subtree) throw BinarySearchTreeChangedSubtree();
 	if (_root != NULL)
    		delete _root;
     _root = NULL;
@@ -294,7 +294,7 @@ DataType BinarySearchTree<DataType>::find (const DataType& q)
 template <class DataType>
 BinarySearchTree<DataType>* BinarySearchTree<DataType>::_insert (const DataType& data)
 {
-	if (_subtree) throw BinarySearchTreeChangedSubtree();
+	//if (_subtree) throw BinarySearchTreeChangedSubtree();
 	BinarySearchTree<DataType>* bst = _find (data);
 	if (bst->isEmpty())
 	{
@@ -307,6 +307,7 @@ BinarySearchTree<DataType>* BinarySearchTree<DataType>::_insert (const DataType&
         delete bst->_root;
 		bst->_root = new DataType (data);
 	}
+	return bst;
 }
 // --------------------------------------------------------------
 template <class DataType>
@@ -322,7 +323,7 @@ void BinarySearchTree<DataType>::insert(DataType& X, DataType& Y, int ID) {
 template <class DataType>
 void BinarySearchTree<DataType>::remove (const DataType& data)
 {
-	if (_subtree) throw BinarySearchTreeChangedSubtree();
+	//if (_subtree) throw BinarySearchTreeChangedSubtree();
 	BinarySearchTree<DataType>* bst;
 	BinarySearchTree<DataType>* bst2;
 	BinarySearchTree<DataType>* bst3;
@@ -404,18 +405,19 @@ void BinarySearchTree<DataType>::rangeSearch (const DataType& low, const DataTyp
 // -----------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::display() {
-    cout << "Preorder Traversal:" << endl;
-    preorder();
-    inorder();
+    cout << "INORDER TRAVERSAL: " << endl;
+    this->preorder();
+    cout << "PREORDER TRAVERSAL: " << endl;
+    this->inorder();
 }
 // ------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::preorder() {
     if (!(isEmpty())) {
-        cout << root() << ": ";
-        (*_yTree).yPreorder();
-        left().preorder();
-        right().preorder();
+        cout << this->root() << ": ";
+        (this->getYTree()->inorder());
+        (this->left()->preorder());
+        (this->right()->preorder());;
 
     }
 }
@@ -424,28 +426,28 @@ template <class DT>
 void BinarySearchTree<DT>::inorder() {
     if (_root != NULL) { //displaying the binary tree in left root right format for inorder using leeft and right pointers then displaying
         // the ytree with the xtree root
-        left().inorder();
-        cout << root() << ": " << endl;
-        (*_yTree)->yInorder();
-        right().inorder();
+        (this->left()->inorder());
+        cout << this->root() << ": " << endl;
+        (this->getYTree()->yInorder());
+        (this->right()->inorder());
     }
 }
 // --------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::yInorder() {
-    if (!(isEmpty())) {
-        left()->yInorder;
-        cout << " " << root() << "(" << getID() << ")" ;
-        right()->yInorder();
+    if (_root != NULL) {
+        (this->left()->yInorder());
+        cout << " " << this->root() << "(" << getID() << ")" ;
+        (this->right()->yInorder());
     }
 }
 // --------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::yPreorder() {
     if (!(isEmpty())) {
-        cout << " " << root() << "(" << getID() << ")";
-        left()->yInorder;
-        right()->yInorder;
+        cout << " " << this->root() << "(" << getID() << ")";
+        (this->left()->yInorder());
+        (this->right()->yInorder());
     }
 }
 // --------------------------------------------------------------------
