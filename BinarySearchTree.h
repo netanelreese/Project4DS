@@ -74,7 +74,7 @@ public:
 	virtual bool subtree();
 	virtual void makeEmpty ();
 	virtual DataType find (const DataType& q);
-	virtual void remove (const DataType& data);
+	virtual void _remove (const DataType& data);
 	virtual void rangeSearch (const DataType& low, const DataType& high);
 	virtual BinarySearchTree<DataType>* _insert (const DataType& data);
 	virtual void insert(DataType& x, DataType& y, int ID);
@@ -105,6 +105,7 @@ BinarySearchTree<DataType>::BinarySearchTree ()
 	_root = NULL;
 	_left = NULL;
 	_right = NULL;
+	_yTree = NULL;
 	_subtree = false;
 	id = 0;
 }
@@ -313,15 +314,36 @@ BinarySearchTree<DataType>* BinarySearchTree<DataType>::_insert (const DataType&
 template <class DataType>
 void BinarySearchTree<DataType>::insert(DataType& X, DataType& Y, int ID) {
     BinarySearchTree<DataType>* temp1 = new BinarySearchTree<DataType>();
-    temp1 = _find(X);
-    if(temp1 == NULL) temp1 = _insert(X);
-    (*temp1).id = -1;
-    BinarySearchTree<DataType>* temp2 = ((*temp1).getYTree())->_insert(Y);
-    (*temp2).id = ID;
+    temp1 = this->_find(X);
+    if(temp1->isEmpty()){
+        BinarySearchTree<DataType>* BST1 = _insert(X);
+        if (BST1->getYTree() == NULL) {
+            BST1->_yTree = new BinarySearchTree<DataType>(Y);
+            BST1->_yTree->id = ID;
+            this->_find(X)->_yTree->id = ID;
+        }
+        else {
+            BinarySearchTree<DataType>* BST2 = new BinarySearchTree<DataType>();
+            BST2 = getYTree()->_insert(Y);
+            this->_find(X)->_yTree->id = ID;
+        }
+    }
+    else {
+        if(temp1->getYTree() == NULL) {
+            this->_find(X)->_yTree = new BinarySearchTree<DataType>(Y);
+            this->_find(X)->getYTree()->id = ID;
+        }
+        else {
+            BinarySearchTree<DataType>* BST2 = new BinarySearchTree<DataType>();
+            BST2 = temp1->getYTree()->_insert(Y);
+            temp1->getYTree()->_find(Y)->id = ID;
+        }
+    }
+
 }
 // --------------------------------------------------------------
 template <class DataType>
-void BinarySearchTree<DataType>::remove (const DataType& data)
+void BinarySearchTree<DataType>::_remove (const DataType& data)
 {
 	//if (_subtree) throw BinarySearchTreeChangedSubtree();
 	BinarySearchTree<DataType>* bst;
@@ -414,8 +436,9 @@ void BinarySearchTree<DT>::display() {
 template <class DT>
 void BinarySearchTree<DT>::preorder() {
     if (!(isEmpty())) {
-        cout << this->root() << ": ";
-        (this->getYTree()->inorder());
+        cout << this->root() << ": " << endl;
+        (this->getYTree()->yInorder());
+        cout << endl;
         (this->left()->preorder());
         (this->right()->preorder());;
 
@@ -429,16 +452,18 @@ void BinarySearchTree<DT>::inorder() {
         (this->left()->inorder());
         cout << this->root() << ": " << endl;
         (this->getYTree()->yInorder());
+        cout << endl;
         (this->right()->inorder());
     }
 }
 // --------------------------------------------------------------------
 template <class DT>
 void BinarySearchTree<DT>::yInorder() {
-    if (_root != NULL) {
+    if (!(isEmpty())) {
         (this->left()->yInorder());
-        cout << " " << this->root() << "(" << getID() << ")" ;
+        cout << " " << this->root() << "(" << getID() << ")" << " ";
         (this->right()->yInorder());
+
     }
 }
 // --------------------------------------------------------------------
@@ -446,8 +471,8 @@ template <class DT>
 void BinarySearchTree<DT>::yPreorder() {
     if (!(isEmpty())) {
         cout << " " << this->root() << "(" << getID() << ")";
-        (this->left()->yInorder());
-        (this->right()->yInorder());
+        (this->left()->yPreorder());
+        (this->right()->yPreorder());
     }
 }
 // --------------------------------------------------------------------

@@ -42,28 +42,35 @@ int main() {
     while (cin >> command) {
         if (command == INSERT) {
             cin >> x >> y >> id;
-            //InputBST->insert(x, y, id);
-            cout << "Insert: " << "(" << x << "," << y << ")" << "ID:" << id << endl;
+
+            //cout << "Insert: " << "(" << x << "," << y << ")" << "ID:" << id << endl; this was a tester thing for my main method, ignore this
+
+
+            InputBST->insert(x, y, id); //inserting the x and y value into the bst with the id
+            cout << x << " " << y << " " << id << endl;
         }
         else if (command == FIND) {
             cin >> x >> y;
-            cout << "Find: " << x << " " << y << endl;
-            //InputBST.find(x);
+            //cout << "Find: " << x << " " << y << endl;
+            InputBST->find(x);
         }
         else if (command == PRINT) {
             cout << "Print" << endl;
             InputBST->display();
+            cout << endl;
         }
         else if (command == BALY) {
             cin >> y;
             cout << "Y tree rebalance" << endl;
-            //InputBST.g
+
         }
         else if (command == RANGESEARCH) {
             cin >> xRange1 >> xRange2 >> yRange1 >> yRange2;
 
-            cout << "Range Search: " << "X Range: " << xRange1 << "," << xRange2 << " / " << "Y Range: " << yRange1 << "," << yRange2 << endl;
-
+            cout << "Range search" << endl;
+            cout << xRange1 << " " << xRange2 << " " << yRange1 << " " << yRange2 << endl;
+            InputBST->rangeSearch(xRange1, xRange2);
+            InputBST->getYTree()->rangeSearch(yRange1, yRange2);
         }
         else if (command == REMOVE) {
             cin >> x >> y;
