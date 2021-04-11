@@ -1,65 +1,82 @@
-/*
- *    Data Structures Featuring C++  (c) 2021 Sridhar Radhakrishnan
- */
+//
+// Created by reese on 4/10/2021.
+//
 
 #include "BinarySearchTree.h"
 #include <iostream>
 
 using namespace std;
 
-int main()
+const char INSERT = 'I';
+const char PRINT = 'P';
+const char FIND = 'F';
+const char BALY = 'Y';
+//const char BALX = 'X';
+const char RANGESEARCH = 'S';
+const char REMOVE = 'R';
+
+template<class DataType>
+BinarySearchTree<DataType>* GlobalRebalance(BinarySearchTree<DataType>** inOrderArray, int l, int r)
 {
-    BinarySearchTree<int> bst (100);
+    int mid = 0;
+    BinarySearchTree<DataType>* temp = new BinarySearchTree<DataType>();
 
-    cout <<"Initially the tree has  "<< bst << endl;
-
-    bst.setYTree(new BinarySearchTree<int>(100));
-
-    bst._insert (20);
-    cout <<"After Insertion of 20:  "<< bst << endl;
-
-    bst._insert (10);
-    cout <<"After Insertion of 10:  "<< bst << endl;
-
-    bst._insert (200);
-    cout <<"After Insertion of 200:  "<< bst << endl;
-
-    bst._insert (25);
-    cout <<"After Insertion of 25:  "<< bst << endl;
-
-    bst._insert (30);
-    cout <<"After Insertion of 25:  "<< bst << endl;
-
-    cout << "Trying to find 30..." << endl;
-    try {
-        bst.find(30);
-        cout<<endl;
-    }
-    catch (BinarySearchTreeNotFound e) {
-        cout << "Element 30 not found!!" << endl;
+    if(l <= r)
+    {
+        mid = ((l + r) / 2);
+        temp = inOrderArray[mid];
+        temp->left(GlobalRebalance(inOrderArray, l, mid - 1));
+        temp->right(GlobalRebalance(inOrderArray, mid + 1, r));
     }
 
-    bst.remove(25);
-    cout<<"After removal of 25:"<<bst<<endl;
+    return temp;
+}
 
-    cout << "Trying to find 25..." << endl;
-    try {
-        bst.find(25);
+int main() {
+    char command;
+    int x, y, id;
+    int xRange1, xRange2, yRange1, yRange2;
+
+    BinarySearchTree<int>* InputBST = new BinarySearchTree<int>();
+
+    while (cin >> command) {
+        if (command == INSERT) {
+            cin >> x >> y >> id;
+            //InputBST->insert(x, y, id);
+            cout << "Insert: " << "(" << x << "," << y << ")" << "ID:" << id << endl;
+        }
+        else if (command == FIND) {
+            cin >> x >> y;
+            cout << "Find: " << x << " " << y << endl;
+            //InputBST.find(x);
+        }
+        else if (command == PRINT) {
+            cout << "Print" << endl;
+            InputBST->display();
+        }
+        else if (command == BALY) {
+            cin >> y;
+            cout << "Y tree rebalance" << endl;
+            //InputBST.g
+        }
+        else if (command == RANGESEARCH) {
+            cin >> xRange1 >> xRange2 >> yRange1 >> yRange2;
+
+            cout << "Range Search: " << "X Range: " << xRange1 << "," << xRange2 << " / " << "Y Range: " << yRange1 << "," << yRange2 << endl;
+
+        }
+        else if (command == REMOVE) {
+            cin >> x >> y;
+
+            cout << "Remove :" << x << " " << y << endl;
+            //InputBST.remove(x);
+        }
+        else {
+            cout << "Invalid Command." << endl;
+        }
     }
-    catch (BinarySearchTreeNotFound e) {
-        cout << "Element 25 not found!!" << endl;
-    }
 
-    bst.remove(100);
-    cout<<"After removal of 100:"<<bst<<endl;
+    //delete [] InputBST;
 
-    bst.remove(20);
-    cout<<"After removal of 20:"<<bst<<endl;
-
-    bst.remove(10);
-    cout<<"After removal of 10:"<<bst<<endl;
-
-    bst.display();
-
-    return 0;
+    return 1;
 }
