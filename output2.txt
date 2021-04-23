@@ -1,0 +1,142 @@
+20 22 73
+25 20 122
+20 7 209
+Remove: 20 1
+The element you are trying to remove is not in the tree 
+Remove: 15 13
+The element you are trying to remove is not in the tree 
+20 49 10
+15 2 910
+10 30 323
+25 18 581
+25 21 709
+10 20 130
+Remove: 20 2
+The element you are trying to remove is not in the tree 
+Remove: 10 23
+The element you are trying to remove is not in the tree 
+10 7 288
+Remove: 15 45
+The element you are trying to remove is not in the tree 
+Remove: 25 32
+The element you are trying to remove is not in the tree 
+25 28 234
+10 14 277
+10 14 396
+15 6 491
+25 36 412
+20 2 483
+Remove: 25 14
+The element you are trying to remove is not in the tree 
+Remove: 20 18
+The element you are trying to remove is not in the tree 
+Remove: 10 5
+The element you are trying to remove is not in the tree 
+15 36 951
+20 27 879
+10 47 172
+10 39 17
+15 28 141
+20 28 322
+20 5 125
+Remove: 20 18
+The element you are trying to remove is not in the tree 
+Remove: 15 4
+The element you are trying to remove is not in the tree 
+Remove: 25 23
+The element you are trying to remove is not in the tree 
+Remove: 10 3
+The element you are trying to remove is not in the tree 
+Remove: 25 5
+The element you are trying to remove is not in the tree 
+10 40 156
+20 6 958
+Remove: 10 25
+The element you are trying to remove is not in the tree 
+Remove: 15 37
+The element you are trying to remove is not in the tree 
+10 25 682
+10 9 360
+10 17 222
+10 9 217
+15 24 918
+20 5 348
+25 47 967
+Remove: 15 45
+The element you are trying to remove is not in the tree 
+Remove: 25 41
+The element you are trying to remove is not in the tree 
+Remove: 20 33
+The element you are trying to remove is not in the tree 
+10 41 801
+20 21 554
+20 38 134
+25 16 482
+Remove: 10 1
+The element you are trying to remove is not in the tree 
+10 0 569
+10 29 922
+10 0 99
+Remove: 15 10
+The element you are trying to remove is not in the tree 
+Remove: 25 29
+The element you are trying to remove is not in the tree 
+10 9 271
+10 34 928
+20 18 286
+10 5 643
+25 27 777
+Remove: 10 32
+The element you are trying to remove is not in the tree 
+Remove: 25 47
+Remove: 10 20
+Remove: 25 46
+The element you are trying to remove is not in the tree 
+10 39 982
+25 29 444
+20 7 201
+25 25 937
+Remove: 10 12
+The element you are trying to remove is not in the tree 
+Remove: 10 24
+The element you are trying to remove is not in the tree 
+Remove: 15 17
+The element you are trying to remove is not in the tree 
+20 2 817
+25 16 410
+20 34 598
+25 49 227
+15 28 923
+20 11 574
+25 50 281
+10 30 346
+20 33 778
+Remove: 20 14
+The element you are trying to remove is not in the tree 
+Remove: 10 42
+The element you are trying to remove is not in the tree 
+25 2 155
+20 29 835
+20 44 35
+20 32 699
+20 9 609
+20 19 78
+Remove: 20 28
+10 23 513
+15 45 813
+25 15 967
+25 29 323
+Remove: 10 41
+Remove: 15 26
+The element you are trying to remove is not in the tree 
+10 38 510
+25 12 376
+25 36 699
+Remove: 15 12
+The element you are trying to remove is not in the tree 
+Remove: 15 28
+20 33 944
+Remove: 20 7
+Remove: 25 10
+The element you are trying to remove is not in the tree 
+Remove: 20 27

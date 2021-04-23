@@ -122,7 +122,7 @@ BinarySearchTree<DataType>::BinarySearchTree ()
 	_right = NULL;
 	_yTree = NULL;
 	_subtree = false;
-	id = 0;
+	id = -1;
 }
 // --------------------------------------------------------------
 template <class DataType>
